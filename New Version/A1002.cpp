@@ -1,5 +1,5 @@
 /*
-1002 A+B for Polynomials (25)（25 分）
+1002 A+B for Polynomials (25)
 This time, you are supposed to find A+B where A and B are two polynomials.
 
 Input
@@ -20,7 +20,7 @@ Sample Output
 
 
 */
-
+//map的应用
 #include<iostream>
 #include<iomanip>
 #include<string>

@@ -24,8 +24,7 @@ Sample Output
 0 1
 */
 //bfs
-//解法1：通过父亲结点的层次计算出儿子节点的层次，再通过出队访问判断是否是叶子节点
-//缺点：浪费空间
+//解法2：采用辨别层次的方法，记录每层的叶子节点
 #include<iostream>
 #include<vector>
 #include<queue>
@@ -34,47 +33,54 @@ using namespace std;
 
 vector <int> v[101];
 
-int node[101],l[101], maxl;
+vector<int> levelNum;
 
-void bfs(){
+int bfs(){
 
 	queue<int> q;
 
 	q.push(1);
 
-	node[1] =1;
+	int last = 1, level = 0;
 	
 	while(!q.empty()){
 
-		int k = q.front();
-
-		q.pop();
+		int k = q.front();q.pop();
 
 		if(v[k].size() == 0){
 
-			l[node[k]]++;
+			levelNum[level]++;
 
 		} 
-		maxl = max(maxl,node[k]);
 
 		for(int i = 0 ; i < v[k].size(); i++){
 
 			q.push(v[k][i]);
 
-			node[v[k][i]] = node[k] +1;
+		}
+
+		if (last == k) {
+
+			level++;
+
+			if (!q.empty()) last = q.back();
 
 		}
 
 	} 
 
+	return level;
 }
 
 int main(){
+
 	std::ios::sync_with_stdio(false);
 
 	int cnt,nln;
 
 	cin >> cnt >> nln ;
+
+	levelNum.resize(cnt,0);
 	
 	for(int i  = 0; i < nln ; i ++){
 		int t,t1;
@@ -92,13 +98,13 @@ int main(){
 		
 	}
 	
-	bfs();
+	int maxLevel = bfs();
 	
-	cout << l[1];
-	
-	for(int i = 0 ; i <  ; i++){
+	for(int i = 0 ; i <  maxLevel; i++){
 
-		cout << " " << l[i];
+		if(i != 0) cout << " " << levelNum[i];
+
+		else cout << levelNum[i];
 
 	}
 

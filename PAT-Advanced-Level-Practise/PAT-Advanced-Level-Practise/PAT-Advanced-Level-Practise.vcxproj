@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\New Version\A1003.cpp" />
+    <ClCompile Include="..\..\New Version\A1007-2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7280D436-E2F3-416C-9160-D3482988014B}</ProjectGuid>
